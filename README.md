@@ -1,20 +1,41 @@
-# AI-Powered Voice Assistant
+# BingAI-Powered Voice Assistant
 
-This repository contains code for an AI-powered voice assistant that can interact with users, provide information, and assist with tasks. The project is based on the excellent work of the [Bing-GPT-Voice-Assistant](https://github.com/Ai-Austin/Bing-GPT-Voice-Assistant) repository by [Ai-Austin](https://github.com/Ai-Austin), which served as the foundation for this project. It has been extended to include additional features and capabilities.
+This repository contains code for a BingAI-powered voice assistant that can recognize users through face detection login and interact with them, providing information from BingAI responses.
 
 ## Features
 
-- **Wake Words**: The voice assistant responds to the wake words "ok bing" or "ok chat.", the former will send the prompt to Bing AI, while the latter will send it to Chat GPT 3.5
+The provided Python script implements an interactive voice-based AI assistant that integrates speech recognition, text-to-speech synthesis, face recognition, and AI conversation capabilities. This comprehensive script allows users to interact with the AI assistant through voice commands, receiving spoken responses, and performing actions based on user inputs.
 
-- **Chat Interaction**: With the wake word recognized, users can engage in a conversation with the voice assistant.
+### 1. Voice Interaction
 
-- **Speech Synthesis**: Responses from the voice assistant are synthesized using Amazon Polly, providing a natural and human-like voice (which can be customized on the AWS webiste).
+The AI assistant utilizes the `speech_recognition` library to listen for user commands through the microphone. Users can initiate interactions by speaking prompts and questions to the assistant.
+
+### 2. Text-to-Speech Synthesis
+
+The script employs the Amazon Polly service to synthesize spoken responses from text. The `PollySynthesizer` class handles this functionality, providing a seamless conversion of AI-generated text responses into natural-sounding speech.
+
+### 3. Face Recognition and Authentication
+
+The `FaceLogin` class enables user authentication through facial recognition. Users can enroll by capturing their facial features, which are then stored as templates for future recognition. This feature enhances security and personalization by allowing the assistant to recognize registered users based on their unique facial characteristics.
+New users can easily enroll in the system through the facial recognition feature. The script guides users through the process of capturing facial images, creating an average face template, and saving it for later recognition. This feature enhances the assistant's ability to personalize interactions.
+
+### 4. AI Chatbot Integration
+
+The AI assistant interacts with an external AI chatbot through the Bing chatbot API. The `AIAssistant` class handles the communication with the chatbot, sending user prompts, and receiving text responses. This integration enables the assistant to provide relevant and contextually appropriate answers to user queries. The `EdgeGPT` library is employed to interact with the chatbot, and the conversation style is set to `precise` to ensure accurate and coherent replies. The AI assistant provides a seamless and user-friendly experience through spoken prompts, text-to-speech responses, and user-friendly interactions. It enables a natural and intuitive way for users to interact with technology.
+
+### 5. Error Handling and Stability
+
+The script includes error handling mechanisms to manage potential exceptions during various stages of execution. This ensures that users are provided with informative messages in case of errors or failures.
+
+### 6. Easily Extensible
+
+Developers can extend the functionality of the AI assistant by integrating additional features, modifying the conversation with the chatbot, or enhancing the face recognition process. The script's modular structure allows for easy expansion and customization.
 
 ## Requirements
 
 To use this voice assistant, you need to fulfill the following requirements:
 
-1. **OpenAI API Key**: You must have an OpenAI API key to enable the GPT-3 chat capabilities. Get your API key by visiting the [OpenAI website](https://beta.openai.com/signup/).
+1. **Python 3.x**: Make sure you have Python installed on your system.
 
 2. **AWS Account and Polly Access**: The voice synthesis feature is powered by Amazon Polly. You need an AWS account and API credentials for Polly to use this feature.
 
@@ -34,8 +55,7 @@ To use this voice assistant, you need to fulfill the following requirements:
    conda env create -f environment.yml
    conda activate voice-assistant-env
 
-3. Replace [paste your OpenAI API key here] in main.py with your actual OpenAI API key.
-   Alternatively, one can use a config.yml file that will be ignored by git while pushing.
+3. Set up environment variables for Amazon AWS services.
    
 4. Run the voice assistant:
    ```bash
@@ -60,33 +80,24 @@ To use this voice assistant, you need to fulfill the following requirements:
    ```bash
    pip install -r requirements.txt
 
-4. Replace [paste your OpenAI API key here] in main.py with your actual OpenAI API key.
+4. Set up environment variables for Amazon AWS services.
    
 5. Run the voice assistant:
    ```bash
    python main.py
 
-### Usage
+## License
 
-1. Start the voice assistant by running main.py.
-2. Use the wake word ("ok bing" or "ok chat") to start the assistant based on the AI you want to use.   
-3. Speak your prompt.
-4. The voice assistant will respond based on the prompt using either GPT-3 or Bing AI.
-5. Enjoy the interactions with your AI-powered voice assistant!
+This script is provided under the [MIT License](LICENSE), allowing you to freely use and modify the code according to your needs. See the LICENSE file for more details.
 
-### Important Note
-This voice assistant uses AI technologies and requires proper API keys. It's essential to keep your API keys and credentials secure and follow the usage guidelines of the respective services.
+## Acknowledgments
+
+This project was developed using various open-source libraries and technologies. We acknowledge the contributions of the developers and maintainers of these libraries, which have made this AI assistant possible.
 
 ## Next Steps/ Future Improvements
 Here are some potential areas for enhancement and development:
 
-- **Additional AI**: Integrate other AI like BARD for more choice.
-
 - **Handle long conversation**: Implement features to handle long conversation with the AI using more than one prompt.
-
-- **Additional APIs**: Integrate other APIs for more functionalities, such as weather information, news updates, or language translation.
-
-- **Automatically select AI**: Automatically select the best AI for the submitted prompt.
 
 - **Error Handling**: Implement robust error handling to gracefully handle API errors or unexpected user input.
 
